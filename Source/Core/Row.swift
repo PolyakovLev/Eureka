@@ -172,6 +172,11 @@ open class Row<Cell: CellType>: RowOf<Cell.Value>, TypedRowType where Cell: Base
         super.init(tag: tag)
     }
 
+    /// In a need to customize initialization of a cell, this is the method that should be overridden. By default it returns a cell from `cellProvider`
+    open func newCell() -> Cell {
+        return cellProvider.makeCell(style: self.cellStyle)
+    }
+    
     /**
      Method that reloads the cell
      */
