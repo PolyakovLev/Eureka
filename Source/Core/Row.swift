@@ -157,7 +157,7 @@ open class Row<Cell: CellType>: RowOf<Cell.Value>, TypedRowType where Cell: Base
     /// The cell associated to this row.
     public var cell: Cell! {
         return _cell ?? {
-            let result = cellProvider.makeCell(style: self.cellStyle)
+            let result = newCell()
             result.row = self
             result.setup()
             _cell = result
